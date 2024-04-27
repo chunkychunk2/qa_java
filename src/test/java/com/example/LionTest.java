@@ -6,8 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
+
+    @Mock
+    Feline feline;
 
 
     @Test
@@ -18,11 +23,16 @@ public class LionTest {
     }
 
     @Test
-    public void doesHaveManeMockTest() throws Exception {
+    public void doesHaveFoodMockTest() throws Exception {
         Feline feline = new Feline();
         Lion lion = new Lion("Самка", feline);
-        Assert.assertFalse(lion.doesHaveMane());
+        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 
+    @Test
+    public void getSexMockTest() throws Exception {
+            Lion lion = new Lion("Самка", feline);
+            Assert.assertFalse(lion.doesHaveMane());
+    }
 
 }

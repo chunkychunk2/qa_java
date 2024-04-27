@@ -11,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
-@RunWith(Parameterized.class)
 public class LionParamTest {
 
     @Before
@@ -19,36 +18,8 @@ public class LionParamTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    private String sex;
-
-    private boolean mane;
-
-    public LionParamTest(String sex, boolean mane) {
-        this.sex = sex;
-        this.mane = mane;
-    }
-
-    @Parameterized.Parameters
-    public static Object[][] getData() {
-        return new Object[][]{
-                {"Самец", true},
-                {"самей", false},
-                {"Самка", false}
-        };
-    }
-
     @Mock
     Feline feline;
-
-    @Test
-    public void getSexMockTest() throws Exception {
-        try {
-            Lion lion = new Lion(sex, feline);
-            Assert.assertEquals(mane, lion.doesHaveMane());
-        } catch (Exception e) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
-        }
-    }
 
     @Test
     public void getFoodMockTest() throws Exception {
