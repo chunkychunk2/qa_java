@@ -9,8 +9,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
-
 @RunWith(Parameterized.class)
 public class FelineParamTest {
 
@@ -38,9 +36,6 @@ public class FelineParamTest {
 
     @Mock
     Feline feline;
-
-    @Mock
-    Animal animal;
 
 
     @Test

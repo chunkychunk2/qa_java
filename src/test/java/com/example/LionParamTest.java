@@ -8,7 +8,6 @@ import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
@@ -22,16 +21,19 @@ public class LionParamTest {
 
     private String sex;
 
-    public LionParamTest(String sex) {
+    private boolean mane;
+
+    public LionParamTest(String sex, boolean mane) {
         this.sex = sex;
+        this.mane = mane;
     }
 
     @Parameterized.Parameters
     public static Object[][] getData() {
         return new Object[][]{
-                {"Самец"},
-                {"самей"},
-                {"Самка"}
+                {"Самец", true},
+                {"самей", false},
+                {"Самка", false}
         };
     }
 
@@ -39,18 +41,21 @@ public class LionParamTest {
     Feline feline;
 
     @Test
-    public void getFoodMockTest() throws Exception {
+    public void getSexMockTest() throws Exception {
         try {
             Lion lion = new Lion(sex, feline);
-
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        System.out.println(lion.getFood());
-        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"),lion.getFood());
-        }catch (Exception e){
-            Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка",e.getMessage());
+            Assert.assertEquals(mane, lion.doesHaveMane());
+        } catch (Exception e) {
+            Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
         }
     }
 
+    @Test
+    public void getFoodMockTest() throws Exception {
+            Lion lion = new Lion("Самец", feline);
+            Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+            Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
+    }
 
 
 }
