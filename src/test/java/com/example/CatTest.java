@@ -12,13 +12,13 @@ public class CatTest {
     Feline feline;
 
     @Test
-    public void getSoundTest() throws Exception {
+    public void getSoundMockTest() throws Exception {
         Cat cat = new Cat(feline);
         Assert.assertEquals("Мяу",cat.getSound());
     }
 
     @Test
-    public void getFoodTest() throws Exception {
+    public void getFoodMockTest() throws Exception {
         Cat cat = new Cat(feline);
         Assert.assertTrue(cat.getFood().isEmpty());
     }

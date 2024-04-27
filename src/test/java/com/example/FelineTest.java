@@ -27,13 +27,13 @@ public class FelineTest {
     }
 
     @Test
-    public void getFelineKittensMockTest() throws Exception {
+    public void getFelineKittensTest() throws Exception {
         Feline felineNotMock = new Feline();
         Assert.assertEquals(1, felineNotMock.getKittens());
     }
 
     @Test
-    public void getFelineFamilyMockTest() {
+    public void getFelineFamilyTest() {
         Feline felineNotMock = new Feline();
         Assert.assertEquals("Кошачьи",felineNotMock.getFamily());
     }
