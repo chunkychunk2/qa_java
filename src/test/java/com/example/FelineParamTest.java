@@ -33,10 +33,8 @@ public class FelineParamTest {
         };
     }
 
-
     @Mock
     Feline feline;
-
 
     @Test
     public void getFelineFoodMockTest() throws Exception {
@@ -46,7 +44,7 @@ public class FelineParamTest {
     }
 
     @Test
-    public void getFelineKittensWithArgsMockTest() throws Exception {
+    public void getFelineKittensWithArgsMockTest() {
         feline.getKittens(catCount);
         Mockito.verify(feline, Mockito.times(1)).getKittens(catCount);
         Assert.assertEquals(0, feline.getKittens(catCount));

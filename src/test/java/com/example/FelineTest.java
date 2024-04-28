@@ -1,40 +1,27 @@
 package com.example;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
 public class FelineTest {
 
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
-
-    @Mock
-    Animal animal;
-
     @Test
-    public void eatMeatMockTest() throws Exception {
+    public void eatMeatTest() throws Exception {
         Feline feline = new Feline();
-        Mockito.when(animal.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
     }
 
     @Test
-    public void getFelineKittensTest() throws Exception {
-        Feline felineNotMock = new Feline();
-        Assert.assertEquals(1, felineNotMock.getKittens());
+    public void getFelineKittensTest() {
+        Feline feline = new Feline();
+        Assert.assertEquals(1, feline.getKittens());
     }
 
     @Test
     public void getFelineFamilyTest() {
-        Feline felineNotMock = new Feline();
-        Assert.assertEquals("Кошачьи",felineNotMock.getFamily());
+        Feline feline = new Feline();
+        Assert.assertEquals("Кошачьи",feline.getFamily());
     }
 }
